@@ -18,23 +18,25 @@ import {
     // Items,
     // LinkItem,
 } from '../../components/Home/Home';
+import { navigate } from '../../redux/browser';
+import { connect } from 'react-redux';
 
 const HomePage = props => (
     <Home>
         <Items>
-            <Item dura='.chaingear'>
+            <Item dura='.chaingear' onNavigate={ props.navigate} >
                 <ItemTitle>Chaingear</ItemTitle>
                 <Image type='chaingear' />
                 <Arrow />
             </Item>
 
-            <Item dura='.dragons'>
+            <Item onNavigate={ props.navigate} dura='.dragons'>
                 <ItemTitle>Dragonereum</ItemTitle>
                 <Image type='dragonereum' />
                 <Arrow />
             </Item>
 
-            <Item dura='.ipfsview'>
+            <Item onNavigate={ props.navigate} dura='.ipfsview'>
                 <ItemTitle>IPFS web UI</ItemTitle>
                 <Image type='ipfs' />
                 <Arrow />
@@ -62,4 +64,9 @@ const HomePage = props => (
     </Home>
 );
 
-export default HomePage;
+export default connect(
+    state => ({}),
+    { navigate },
+)(HomePage);
+
+//export default HomePage;

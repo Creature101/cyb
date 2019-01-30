@@ -6,21 +6,21 @@ const Logo = props => (
     <CybLink { ...props } className='logo'>logo</CybLink>
 );
 
-export const LogoLink = ({ onClick }) => (
+export const LogoLink = ({ onClick, ...props }) => (
     <div className='menu-logo'>
-        <Logo dura='' onClick={ onClick } />
+        <Logo { ...props } dura='' onClick={ onClick } />
     </div>
 );
 
-export const AppStoreLink = () => (
-    <CybLink dura='apps.cyb' className='app-store-link'>
+export const AppStoreLink = (...props ) => (
+    <CybLink { ...props } dura='apps.cyb' className='app-store-link'>
         App Store
     </CybLink>
 );
 
-const Items = ({ item, deleteAppFromMenu }) => (
+const Items = ({ item, deleteAppFromMenu, ...props }) => (
     <span className='bookmarks__item' key={ item.rootDura }>
-        <CybLink dura={ item.rootDura }>
+        <CybLink { ...props } dura={ item.rootDura }>
             {item.name}
         </CybLink>
         <button
@@ -33,10 +33,11 @@ const Items = ({ item, deleteAppFromMenu }) => (
     </span>
 );
 
-export const Bookmarks = ({ items, deleteMenuItem }) => (
+export const Bookmarks = ({ items, deleteMenuItem, ...props }) => (
     <div className='bookmarks'>
         {items.map(item => (
             <Items
+              {...props}
               key={ item.rootDura }
               item={ item }
               deleteAppFromMenu={ deleteMenuItem }

@@ -11,6 +11,8 @@ import {
     ScrollContainer,
 } from '@cybercongress/ui';
 import ButtonDura from '../../components/Button/Button';
+import { navigate } from '../../redux/browser';
+import { connect } from 'react-redux';
 
 // import Vitalik from '../../components/Vitalik/Vitalik';
 // import NotFoundPage from '../../components/NotFound/NotFound';
@@ -44,9 +46,9 @@ const NotFound = (props) => {
                                 and Cyb will understand it!
                             </Text>
                         </CentredPanel>
-                        <ButtonDura color='green' dura='rr.cyb'>
+                        <Button onNavigate={ props.navigate} color='green' dura='rr.cyb'>
                             Go to Root Registry!
-                        </ButtonDura>
+                        </Button>
                     </FlexContainerLeft>
                     <FlexContainerRight>
                         <Vitalick />
@@ -57,4 +59,9 @@ const NotFound = (props) => {
     );
 };
 
-export default NotFound;
+export default connect(
+    state => ({}),
+    { navigate },
+)(NotFound);
+
+// export default NotFound;

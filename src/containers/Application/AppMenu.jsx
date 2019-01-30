@@ -5,24 +5,25 @@ import ClickOutside from 'react-click-outside';
 import {
     Message,
     MenuContainer,
-    // Bookmarks,
-    // LogoLink,
+    Bookmarks,
+    LogoLink,
     AddMenuItem,
     AddMenuItemReject,
     ReportLinkContainer,
     AddMenuItemContainer,
 } from '@cybercongress/ui';
 import * as actions from '../../redux/appMenu';
+import { navigate } from '../../redux/browser';
 
 
-import {
-    Bookmarks,
-    LogoLink,
+//import {
+    // Bookmarks,
+    // LogoLink,
 //     AddMenuItem,
 //     AddMenuItemReject,
 //     ReportLinkContainer,
 //     AddMenuItemContainer,
-} from '../../components/AppMenu/AppMenu';
+//} from '../../components/AppMenu/AppMenu';
 
 class AppMenu extends Component {
     addToFavorites = () => {
@@ -57,7 +58,10 @@ class AppMenu extends Component {
 
         return (
             <MenuContainer>
-                <LogoLink onClick={ this.clickLogo } />
+                <LogoLink
+                    onNavigate={this.props.navigate}
+                    onClick={ this.clickLogo }
+                />
 
                 <Message
                   style={ {
@@ -70,6 +74,7 @@ class AppMenu extends Component {
                 <Bookmarks
                   items={ menuItems }
                   deleteMenuItem={ deleteMenuItem }
+                  onNavigate={this.props.navigate}
                 />
                 {pendingAddToFavorites
                 && (
@@ -106,5 +111,5 @@ export default connect(
         currentDura: state.browser.dura,
         pendingAddToFavorites: state.appMenu.pendingAddToFavorites,
     }),
-    actions,
+    { actions, navigate },
 )(AppMenu);
