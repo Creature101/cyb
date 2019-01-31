@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styles from './create.less';
-import CybLink from '../../components/CybLink';
+import {CybLink} from '@cybercongress/ui';
+import { connect } from 'react-redux';
+import { navigate } from '../../redux/browser';
 
 class Create extends Component {
     render() {
@@ -46,7 +48,7 @@ class Create extends Component {
                         <h3>
                             If you want to put this app in the production and share
                             it with friends install
-                            <CybLink dura='help.cyb/ipfs'>ipfs</CybLink>
+                            <CybLink onNavigate={this.props.navigate} dura='help.cyb/ipfs'>ipfs</CybLink>
                             and run:
                         </h3>
                         <pre>ipfs add -r <strong>distribution/</strong></pre>
@@ -71,4 +73,10 @@ class Create extends Component {
     }
 }
 
-export default Create;
+export default connect(
+    state => ({}),
+    { navigate },
+  )(Create);
+  
+
+// export default Create;

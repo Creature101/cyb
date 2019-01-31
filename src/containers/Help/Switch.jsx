@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import {CybLink} from '@cybercongress/ui';
+
+import { connect } from 'react-redux';
 import styles from './create.less';
-import CybLink from '../../components/CybLink';
+import { navigate } from '../../redux/browser';
 
 class Favourites extends Component {
     render() {
@@ -16,7 +19,7 @@ class Favourites extends Component {
                     <p>Chose necessary ETH network with buttons "Main", "Rikenby" and "Kovan"</p>
                   </li>
                   <li>
-                    <p>You can also change network addresses for your custom by following <CybLink dura='help.cyb/eth'>guide</CybLink></p>
+                    <p>You can also change network addresses for your custom by following <CybLink  onNavigate={ this.props.navigate} dura='help.cyb/eth'>guide</CybLink></p>
                   </li>
                 </ol>
             </div>
@@ -24,4 +27,9 @@ class Favourites extends Component {
     }
 }
 
-export default Favourites;
+export default connect(
+  state => ({}),
+  { navigate },
+)(Favourites);
+
+// export default Favourites;

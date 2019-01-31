@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import CybLink from '../../components/CybLink';
-import ScrollContainer from '@cybercongress/ui';
+import { connect } from 'react-redux';
+import { navigate } from '../../redux/browser';
+// import CybLink from '../../components/CybLink';
+import {ScrollContainer, CybLink} from '@cybercongress/ui';
 
 class HelpApp extends Component {
     render() {
         return (
             <ScrollContainer>
                 <div>
-                    <CybLink dura='help.cyb'>go Home</CybLink>
+                    <CybLink onNavigate={ this.props.navigate} dura='help.cyb'>go Home</CybLink>
                 </div>
                 {this.props.children}
             </ScrollContainer>
@@ -15,4 +17,9 @@ class HelpApp extends Component {
     }
 }
 
-export default HelpApp;
+export default connect(
+    state => ({}),
+    { navigate },
+)(HelpApp);
+
+// export default HelpApp;
