@@ -10,7 +10,7 @@ import {
     FlexContainerRight,
     ScrollContainer,
 } from '@cybercongress/ui';
-import ButtonDura from '../../components/Button/Button';
+//import ButtonDura from '../../components/Button/Button';
 import { navigate } from '../../redux/browser';
 import { connect } from 'react-redux';
 

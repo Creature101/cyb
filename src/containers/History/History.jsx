@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-    PageTitle, TableCybLink, ScrollContainer, MainContainer,
+    PageTitle, TableCybLink, ScrollContainer, MainContainer, CybLink,
 } from '@cybercongress/ui';
 import moment from 'moment';
+import { navigate } from '../../redux/browser';
 
-import CybLink from '../../components/CybLink';
+
+//import CybLink from '../../components/CybLink';
 // import ScrollContainer from '../../components/ScrollContainer/ScrollContainer';
 // import Table from '../../components/Table/Table';
 
 class History extends Component {
     renderItem = (item, index) => {
         const { dura, date } = item;
-        let content = <CybLink dura={ dura }>{dura}</CybLink>;
+        let content = <CybLink onNavigate={this.props.navigate} dura={ dura }>{dura}</CybLink>;
 
         if (dura === 'history.cyb') {
             content = <span>{dura}</span>;
@@ -52,6 +54,9 @@ class History extends Component {
     }
 }
 
-export default connect(state => ({
-    history: state.browser.history,
-}))(History);
+export default connect(
+    state => ({
+        history: state.browser.history,
+    }),
+    { navigate },
+)(History);

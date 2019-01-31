@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ClickOutside from 'react-click-outside';
+ import {
+     IdBarComponent,
+     NotificationLink,
+     SettingsLink,
+     CurrentUser,
+ } from '@cybercongress/ui';
 // import IdBarComponent, {
-//     NotificationLink,
+//      NotificationLink,
 //     SettingsLink,
 //     CurrentUser,
-// } from '../../components/IdBar/IdBar';
-import IdBarComponent, {
-     NotificationLink,
-    SettingsLink,
-    CurrentUser,
-     } from '../../components/IdBar/IdBar';
+//      } from '../../components/IdBar/IdBar';
 import { toggleMenu } from '../../redux/appMenu';
 import { getDefaultAccountBalance } from '../../redux/wallet';
 import { getDefaultAccountBalance as getDefaultAccountBalanceCyb } from '../../redux/cyber';
@@ -71,7 +72,7 @@ class IdBar extends Component {
                 {defaultEthAccount && (
                     <NotificationLink
                     onNavigate={this.props.navigate}
-                    
+                    notificationLinkCounter={ notificationLinkCounter }
                     />
                 )}
             </IdBarComponent>

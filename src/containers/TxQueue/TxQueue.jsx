@@ -6,12 +6,13 @@ import {
     MainContainer,
     Hash,
     ScrollContainer,
+    CybLink,
 } from '@cybercongress/ui';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
 import { getTransactions, resend } from '../../redux/wallet';
-import CybLink from '../../components/CybLink';
+// import CybLink from '../../components/CybLink';
 
 // import { Hash } from '../../components/TxQueue/TxQueue';
 // import ScrollContainer from '../../components/ScrollContainer/ScrollContainer';
