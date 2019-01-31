@@ -10,7 +10,7 @@ import {
     ItemTitle,
     Item,
 } from '@cybercongress/ui';
-import {
+//import {
 //    Item,
     // ItemTitle,
     // Image,
@@ -18,7 +18,7 @@ import {
     // LinkList,
     // Items,
     // LinkItem,
-} from '../../components/Home/Home';
+//} from '../../components/Home/Home';
 import { navigate } from '../../redux/browser';
 import { connect } from 'react-redux';
 

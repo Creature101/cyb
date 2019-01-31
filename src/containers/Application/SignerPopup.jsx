@@ -10,6 +10,7 @@ import {
     ConfirmationPopupButtons,
     ConfirmationPopup,
     Input,
+    Button,
 } from '@cybercongress/ui';
 
 // import Block, { BlockRow, Row } from '../../components/Settings/Block';
@@ -21,7 +22,7 @@ import {
 //     ConfirmationPopupButtons,
 // } from '../../components/ConfirmationPopup/ConfirmationPopup';
 // import Input from '../../components/Input/Input';
-import Button from '../../components/Button/Button';
+// import Button from '../../components/Button/Button';
 
 import { getDefaultAccountBalance } from '../../redux/wallet';
 import { approve, reject } from '../../redux/signer';
