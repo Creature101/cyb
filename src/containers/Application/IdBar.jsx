@@ -9,6 +9,7 @@ import IdBarComponent, {
 import { toggleMenu } from '../../redux/appMenu';
 import { getDefaultAccountBalance } from '../../redux/wallet';
 import { getDefaultAccountBalance as getDefaultAccountBalanceCyb } from '../../redux/cyber';
+import { navigate } from '../../redux/browser';
 
 
 class IdBar extends Component {
@@ -58,7 +59,9 @@ class IdBar extends Component {
                       cybBalance={ defaultAccountBalanceCyb }
                     />
                 </ClickOutside>
-                <SettingsLink />
+                <SettingsLink
+                  onNavigate={this.props.navigate}
+                />
                 {defaultEthAccount && (
                     <NotificationLink
                       notificationLinkCounter={ notificationLinkCounter }
@@ -78,5 +81,5 @@ export default connect(
         defaultAccountBalanceCyb: getDefaultAccountBalanceCyb(state),
         notificationLinkCounter: state.wallet.notificationLinkCounter,
     }),
-    { toggleMenu },
+    { toggleMenu, navigate },
 )(IdBar);

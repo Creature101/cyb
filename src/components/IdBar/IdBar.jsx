@@ -4,16 +4,23 @@ import CybLink from '../CybLink';
 
 const IdBarComponent = ({ children }) => (
     <div className='id-bar'>
-        {children}
+        { children }
     </div>
 );
 
 export const NotificationLink = ({ notificationLinkCounter }) => (
-    <CybLink dura='txq.cyb' className='id-bar__txq'><span>{notificationLinkCounter !== 0 ? notificationLinkCounter : ''}</span></CybLink>
+    <CybLink dura='txq.cyb'
+             className='id-bar__txq'><span>{ notificationLinkCounter !== 0 ? notificationLinkCounter : '' }</span></CybLink>
 );
 
-export const SettingsLink = () => (
-    <CybLink dura='settings.cyb' className='id-bar__settings'>Settings</CybLink>
+export const SettingsLink = props => (
+    <CybLink
+      dura='settings.cyb'
+      className='id-bar__settings'
+      { ...props }
+    >
+        Settings
+    </CybLink>
 );
 
 export const WalletLink = () => (
@@ -32,45 +39,45 @@ export const CurrentUser = (props) => {
 
     return (
         <div className='user-popup__container'>
-            {defaultEthAccount ? (
+            { defaultEthAccount ? (
                 <img
-                  alt='user'
-                  className='id-bar__user'
-                  onClick={ toggle }
-                  src={ `https://robohash.org/${defaultEthAccount}` }
+                    alt='user'
+                    className='id-bar__user'
+                    onClick={ toggle }
+                    src={ `https://robohash.org/${ defaultEthAccount }` }
                 />
             ) : (
                 <CybLink dura='wallet.cyb'>
                     <div
-                      className='id-bar__user id-bar__user--default '
-                      onClick={ toggle }
+                        className='id-bar__user id-bar__user--default '
+                        onClick={ toggle }
                     />
                 </CybLink>
-            )}
-            {defaultEthAccount && (
-                <div className={ `user-popup ${open ? 'user-popup--open' : ''}` }>
+            ) }
+            { defaultEthAccount && (
+                <div className={ `user-popup ${ open ? 'user-popup--open' : '' }` }>
                     <div>
                         Username
                     </div>
                     <div className='id-bar-img-container'>
                         <img
-                          alt='user'
-                          className='id-bar__user id-bar__user--big'
-                          src={ `https://robohash.org/${defaultEthAccount}` }
+                            alt='user'
+                            className='id-bar__user id-bar__user--big'
+                            src={ `https://robohash.org/${ defaultEthAccount }` }
                         />
                     </div>
                     <div>
                         <span className='tokenName'>
-                            {ethBalance}
-                            {' '}
+                            { ethBalance }
+                            { ' ' }
                             ETH
                         </span>
                     </div>
                     <hr className='separator' />
                     <div>
                         <span className='tokenName'>
-                            {cybBalance}
-                            {' '}
+                            { cybBalance }
+                            { ' ' }
                             CYB
                         </span>
                     </div>
@@ -78,15 +85,15 @@ export const CurrentUser = (props) => {
                         <WalletLink />
                         <CybLink dura='history.cyb' className='id-bar__history'>history</CybLink>
                         <a
-                          className='id-bar__favorite'
-                          href='/'
-                          onClick={ favoriteClick }
+                            className='id-bar__favorite'
+                            href='/'
+                            onClick={ favoriteClick }
                         >
-                        favorite
+                            favorite
                         </a>
                     </div>
                 </div>
-            )}
+            ) }
         </div>
     );
 };
