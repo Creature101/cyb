@@ -148,4 +148,40 @@ export const getPreloadPath = () => {
     return `file://${path.join(remote.app.getAppPath(), './build/preload.js')}`;
 };
 
+
+let ipfsApi = null;
+
+const IPFSFactory = require('ipfsd-ctl');
+
+const ipfsFactory = IPFSFactory.create({
+    type: 'proc',
+    exec: require('ipfs'),
+});
+
+export const getIpfs = () => {
+    if (!ipfsApi) {
+        return new Promise(((resolve) => {
+            ipfsFactory.spawn((err, ipfsd) => {
+                if (err) {
+                    throw err;
+                }
+
+                ipfsd.api.id((err, id) => {
+                    if (err) {
+                        throw err;
+                    }
+
+                    console.log(id);
+                });
+
+                ipfsApi = ipfsd.api;
+
+                resolve(ipfsApi);
+            });
+        }));
+    }
+
+    return Promise.resolve(ipfsApi);
+};
+
 // export {URLToDURA, DURAToURL, parseURL}

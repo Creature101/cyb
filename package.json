@@ -37,7 +37,9 @@
     "secp256k1": "3.5.2",
     "sha256": "0.2.0",
     "web3": "1.0.0-beta.33",
-    "web3-provider-engine": "14.0.6"
+    "web3-provider-engine": "14.0.6",
+    "ipfs": "0.34.4",
+    "ipfsd-ctl": "0.41.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",

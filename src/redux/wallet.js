@@ -4,6 +4,7 @@ import Cyber from '../cyber/Cyber';
 import { navigate, goBack } from './browser';
 import { setEthNetworkName } from './settings';
 import { showSigner } from './signer';
+import { getIpfs } from '../utils';
 
 const IPFS = require('ipfs-api');
 
@@ -546,12 +547,15 @@ export const init = endpoint => (dispatch, getState) => {
     });
 
     const ipfsConfig = getState().settings.ipfsWrite;
-    const ipfs = new IPFS(ipfsConfig);
+    //const ipfs = new IPFS(ipfsConfig);
 
-    window.cyber = new Cyber(
-        getState().settings.SEARCH_END_POINT, ipfs,
-        getState().settings.CYBERD_WS_END_POINT,
-    );
+    getIpfs()
+        .then((ipfsApi) => {
+            window.cyber = new Cyber(
+                getState().settings.SEARCH_END_POINT, ipfsApi,
+                getState().settings.CYBERD_WS_END_POINT,
+            );
+        });
 
     if (getState().wallet.password) {
         web3.eth.accounts.wallet.load(getState().wallet.password);
